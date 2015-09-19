@@ -1,14 +1,15 @@
 import { Reapp, React, NestedViewList, View, Button } from 'reapp-kit';
 
 class Home extends React.Component {
+
   render() {
     return (
       <NestedViewList {...this.props.viewListProps}>
         <View title="jumpp-cust">
-          <p>Hello, World!</p>
+          <p>pretend we already made the search</p>
 
-          <Button onTap={() => this.router().transitionTo('sub')}>
-            Go to sub view
+          <Button onTap={() => this.router().transitionTo('locations')}>
+            ayy take me to the results, bitch
           </Button>
         </View>
 
