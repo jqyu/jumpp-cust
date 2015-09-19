@@ -1,4 +1,4 @@
-import { React, View, BackButton, Button } from 'reapp-kit';
+import { Reapp, React, NestedViewList, View, BackButton, Button } from 'reapp-kit';
 
 var results = [
   {id: 'poop', name: 'test'},
@@ -7,25 +7,30 @@ var results = [
 ];
 
 class Locations extends React.Component {
+
   render() {
     const backButton =
       <BackButton onTap={() => window.history.back()} />
 
     return (
-      <View {...this.props} title="Locations" titleLeft={backButton}>
-        <p>Hello, from the sub route!</p>
-        {
-          results.map((obj) => {
-            return (
-              <Button onTap={() => this.router().transitionTo('location', { location_id: obj.id })}>
-                name: {obj.name}
-              </Button>
-            );
-          })
-        }
-      </View>
+      <NestedViewList {...this.props.viewListProps}>
+        <View {...this.props} title="Locations" titleLeft={backButton}>
+          <p>Hello, from the locations route!</p>
+          {
+            results.map((obj) => {
+              return (
+                <Button onTap={() => this.router().transitionTo('location', null, { location_id: obj.id })}>
+                  name: {obj.name}
+                </Button>
+              );
+            })
+          }
+        </View>
+        
+        {this.props.child()}
+      </NestedViewList>
     );
   }
 }
 
-export default Locations;
+export default Reapp(Locations);

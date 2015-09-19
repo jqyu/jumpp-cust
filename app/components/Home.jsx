@@ -11,6 +11,9 @@ class Home extends React.Component {
           <Button onTap={() => this.router().transitionTo('locations')}>
             ayy take me to the results, bitch
           </Button>
+          <Button onTap={() => this.router().transitionTo('wallet')}>
+            wallet me up yo
+          </Button>
         </View>
 
         {this.props.child()}
