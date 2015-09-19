@@ -7,11 +7,8 @@ class MenuItem extends React.Component {
   }
 
   render() {
-    const backButton =
-      <BackButton onTap={() => window.history.back()} />
-
     return (
-      <View {...this.props} title="Menu Item" titleLeft={backButton}>
+      <View {...this.props}>
         <p>Hello friend ju-de is a poop</p>
       </View>
     );

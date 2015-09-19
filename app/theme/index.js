@@ -13,5 +13,7 @@ theme({
     iOS.styles,
     styles
   ],
-  animations: [iOS.animations]
+  animations: [
+    iOS.animations
+  ]
 });

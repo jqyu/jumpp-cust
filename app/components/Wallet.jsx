@@ -3,19 +3,18 @@ import { Reapp, React, NestedViewList, View, BackButton, Button } from 'reapp-ki
 class Wallet extends React.Component {
 
   render() {
-    const backButton =
-      <BackButton onTap={() => window.history.back()} />
-
     return(
-      <NestedViewList {...this.props.viewListProps}>
-        <View {...this.props} title="Wallet" titleLeft={backButton}>
-          <p>this is a wallet muhfuckas</p>
-        </View>
+      <View {...this.props}>
+        <NestedViewList {...this.props.viewListProps}>
+          <View {...this.props}>
+            <p>this is a wallet muhfuckas</p>
+          </View>
 
-        {this.props.child()}
-      </NestedViewList>
+          {this.props.child()}
+        </NestedViewList>
+      </View>
     );
-    
+      
   }
 }
 

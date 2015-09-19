@@ -20,26 +20,28 @@ class Location extends React.Component {
   }
 
   render() {
-    const backButton =
-      <BackButton onTap={() => window.history.back()} />
+
+    console.log('Location render:', this.props);
 
     return (
-      <NestedViewList {...this.props.viewListProps}>
-        <View {...this.props} title={"Location: "+this.locationId} titleLeft={backButton}>
-          <p>hello friend you are on a location route</p>
-          {
-            items.map((obj) => {
-              return (
-                <Button onTap={() => this.router().transitionTo('menu-item', null, { location_id: this._id, menu_item_id: obj.id })}>
-                  name: {obj.name}
-                </Button>
-              );
-            })
-          }
-        </View>
+      <View {...this.props}>
+        <NestedViewList {...this.props.viewListProps}>
+          <View>
+            <p>hello friend you are on a location route</p>
+            {
+              items.map((obj) => {
+                return (
+                  <Button onTap={() => this.router().transitionTo('menu-item', null, { location_id: this._id, menu_item_id: obj.id })}>
+                    name: {obj.name}
+                  </Button>
+                );
+              })
+            }
+          </View>
 
-        {this.props.child()}
-      </NestedViewList>
+          {this.props.child()}
+        </NestedViewList>
+      </View>
     );
   }
 

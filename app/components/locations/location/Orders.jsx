@@ -4,11 +4,13 @@ class Orders extends React.Component {
 
   render() {
     return (
-      <NestedViewList {...this.props.viewListProps}>
-        <View {...this.props} title="Orders">
-          <p>hello friends ur orders r h3r3</p>
-        </View>
-      </NestedViewList>
+      <View {...this.props}>
+        <NestedViewList {...this.props.viewListProps}>
+          <View>
+            <p>hello friends ur orders r h3r3</p>
+          </View>
+        </NestedViewList>
+      </View>
     );
   }
 }
