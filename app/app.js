@@ -5,9 +5,9 @@ router(require,
   route('home', '/', { dir: '' },
     route('locations',
       route('location',
-        route('menu-item')
+        route('menu-item'),
+        route('orders')
       ),
-      // route('orders')
       // route('order')
     ),
     route('wallet')

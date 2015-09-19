@@ -1,4 +1,4 @@
-import { React, NestedViewList, View, BackButton, Button } from 'reapp-kit';
+import { Reapp, React, NestedViewList, View, BackButton, Button } from 'reapp-kit';
 
 class Wallet extends React.Component {
 

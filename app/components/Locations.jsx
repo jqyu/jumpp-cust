@@ -1,5 +1,10 @@
 import { Reapp, React, NestedViewList, View, BackButton, Button } from 'reapp-kit';
 
+import Firebase from 'firebase';
+import ReactFireMixin from 'reactfire';
+
+import reactMixin from 'react-mixin';
+
 var results = [
   {id: 'poop', name: 'test'},
   {id: 'shit', name: 'test2'},
@@ -7,6 +12,11 @@ var results = [
 ];
 
 class Locations extends React.Component {
+
+  componentDidMount() {
+    this.ref = new Firebase('https://jumpp.firebaseio.com/business');
+    this.bindAsArray(this.ref.limitToLast(25), 'businesses');
+  }
 
   render() {
     const backButton =
@@ -17,9 +27,11 @@ class Locations extends React.Component {
         <View {...this.props} title="Locations" titleLeft={backButton}>
           <p>Hello, from the locations route!</p>
           {
-            results.map((obj) => {
+            this.state &&
+            this.state.businesses &&
+            this.state.businesses.map((obj) => {
               return (
-                <Button onTap={() => this.router().transitionTo('location', null, { location_id: obj.id })}>
+                <Button onTap={() => this.router().transitionTo('location', null, { location_id: obj['.key'] })}>
                   name: {obj.name}
                 </Button>
               );
@@ -31,6 +43,8 @@ class Locations extends React.Component {
       </NestedViewList>
     );
   }
-}
+};
+
+reactMixin(Locations.prototype, ReactFireMixin);
 
 export default Reapp(Locations);
